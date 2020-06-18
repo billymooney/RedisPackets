@@ -1,2 +1,2 @@
 # RedisPackets
-A updates version of my redis packet util
+A updated version of my redis packet util
