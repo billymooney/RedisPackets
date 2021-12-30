@@ -19,7 +19,7 @@ public class RedisHandler {
     private Map<String, RedisPacket> packets;
 
     @Getter
-    private RedisListener listener = null;
+    private RedisListener listeners = new ArrayList();
 
     private String channel;
     private String address;
@@ -62,8 +62,8 @@ public class RedisHandler {
         }
     }
 
-    public void setListener(RedisListener listener) {
-        this.listener = listener;
+    public void addListener(RedisListener listener) {
+        listeners.add(listener);
     }
 
     private void startListening() {
@@ -91,7 +91,10 @@ public class RedisHandler {
                     JsonObject object = new JsonParser().parse(message).getAsJsonObject();
                     if (packets.containsKey(object.get("identifier").getAsString())) {
                         RedisPacket packet = packets.get(object.get("identifier").getAsString());
-                        listener.receivedPacket(packet, object);
+                        for(int i = 0; i < listeners.length; i++){
+                            let listener = listeners[i];
+                            listener.receivedPacket(packet, object);
+                        }
                     }
                 }
             }
