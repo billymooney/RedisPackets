@@ -7,7 +7,7 @@
     <groupId>org.jefferies</groupId>
     <artifactId>redis-packet-library</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>RedisPacketLibrary</name>
+    <name>redis-packet-library</name>
     <description>A redis packet library made with luv</description>
 
     <dependencies>
