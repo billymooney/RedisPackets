@@ -92,7 +92,7 @@ public class RedisHandler {
                     if (packets.containsKey(object.get("identifier").getAsString())) {
                         RedisPacket packet = packets.get(object.get("identifier").getAsString());
                         for(int i = 0; i < listeners.length; i++){
-                            let listener = listeners[i];
+                            RedisListener listener = listeners[i];
                             listener.receivedPacket(packet, object);
                         }
                     }
