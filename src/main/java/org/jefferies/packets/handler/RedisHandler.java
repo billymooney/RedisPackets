@@ -91,8 +91,8 @@ public class RedisHandler {
                     JsonObject object = new JsonParser().parse(message).getAsJsonObject();
                     if (packets.containsKey(object.get("identifier").getAsString())) {
                         RedisPacket packet = packets.get(object.get("identifier").getAsString());
-                        for(int i = 0; i < listeners.length; i++){
-                            RedisListener listener = listeners[i];
+                        for(int i = 0; i < i.listeners.length; i++){
+                            RedisListener listener = i.listeners[i];
                             listener.receivedPacket(packet, object);
                         }
                     }
